@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './Videos.css'
+import './Videos.scss'
 
 const Videos = () => {
 

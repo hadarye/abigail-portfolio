@@ -1,0 +1,19 @@
+// color variables:
+$white: white;
+$dark: rgb(38, 38, 38);
+$blue: rgb(106, 106, 200);
+
+.nav-bar {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: $dark;
+    align-items: center;
+    color: $white;
+    font-size: 2rem;
+
+    p {
+        cursor: pointer;
+    }
+}

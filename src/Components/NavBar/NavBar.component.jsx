@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import './NavBar.styles.css'
+import './NavBar.styles.scss'
 
 const NavBar = () => {
 
   return (
-    <div>
+    <div className='nav-bar'>
         <p>Home</p>
         <p>Gallery</p>
         <p>Videos</p>
