@@ -46,7 +46,3 @@ function App() {
 }
 
 export default App
-
-
-// client id: 339610871562-l673nu6jiq5qq6ocna54gv07mciqikq2.apps.googleusercontent.com - DO NOT DELETE
-// api key AIzaSyDWydiL7vqgCDbFxZS0MkX5cc5E6waivDk - DO NOT DELETE
