@@ -8,12 +8,12 @@ import './App.scss'
 function App() {
   const [arr, setArr] = useState([]);
 
-  async function getData(url="https://drive.google.com/embeddedfolderview?id=1kSPX_JQYE_NEK4dTfXvezNR4Ygq2YPLy#list") {
+  async function getData() {
     let accumuletor = []
-    let response = await fetch(url);
+    let response = await fetch("/netlify/functions/fetchMedia.js");
     let htmlText = await response.text();
     let parser = new DOMParser();
-    let htmlDoc = parser.parseFromString(text,"text/xml");
+    let htmlDoc = parser.parseFromString(htmlText,"text/xml");
     let anchorList = htmlDoc.getElementByTagName('a');
     console.log(anchorList);
     
