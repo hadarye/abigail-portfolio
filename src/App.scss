@@ -1,19 +1,22 @@
 // color variables:
 $white: white;
+$beige: #e7e2deb4;
 $dark: rgb(14, 14, 14);
 
 @font-face {
   font-family: haarlem;
   src: url('./assets/fonts/Haarlem\ Deco\ DEMO.ttf');
 }
-#root {
-  // font-family: haarlem;
+
+.bg {
+  background-color: $beige;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  position: absolute;
 }
 
 .card {
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
-}
