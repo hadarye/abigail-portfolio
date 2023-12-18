@@ -10,7 +10,7 @@ function App() {
 
   async function getData() {
     let accumuletor = []
-    let response = await fetch("/netlify/functions/fetchMedia.js");
+    let response = await fetch("/netlify/functions/fetchMedia/fetchMedia.js");
     let htmlText = await response.text();
     let parser = new DOMParser();
     let htmlDoc = parser.parseFromString(htmlText,"text/xml");
