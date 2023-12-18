@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import NavBar from './Components/NavBar/NavBar.component'
 import Cursor from './Components/Cursor/Cursor.component'
 import Home from './Routes/Home/Home.component'
-// import node from '../netlify/functions/fetchMedia/fetchMedia'
+import node from '../.netlify/functions-serve/fetchMedia/fetchMedia'
 import './App.scss'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
   async function getData() {
     let accumuletor = []
-    let response = await fetch('../netlify/functions/fetchMedia/fetchMedia');
+    let response = await fetch('../.netlify/functions-serve/fetchMedia/fetchMedia.js');
     let htmlText = await response.text();
     let parser = new DOMParser();
     let htmlDoc = parser.parseFromString(htmlText,"text/xml");
