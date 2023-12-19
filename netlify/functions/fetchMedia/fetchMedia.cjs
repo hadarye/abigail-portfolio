@@ -1,8 +1,9 @@
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
-const handler = async (event) => {
+
+const handler = async () => {
   try {
     const response = await fetch("https://drive.google.com/embeddedfolderview?id=1kSPX_JQYE_NEK4dTfXvezNR4Ygq2YPLy#list");
-    const result = await response.text()
+    const result = await response.text();
     return {
       statusCode: 200,
       body: result
@@ -14,5 +15,4 @@ const handler = async (event) => {
     return { statusCode: 500, body: error.toString() }
   }
 }
-
-module.exports = { handler }
+module.exports = {handler}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './AboutMe.scss'
+import './AboutMe.styles.scss'
 
 const AboutMe = () => {
 
