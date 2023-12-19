@@ -11,7 +11,7 @@ function App() {
 
   async function getData() {
     let accumuletor = []
-    let response = await fetch('../.netlify/functions-serve/fetchMedia/fetchMedia.js');
+    let response = await fetch('/.netlify/functions-serve/fetchMedia/fetchMedia.js');
     let htmlText = await response.text();
     let parser = new DOMParser();
     let htmlDoc = parser.parseFromString(htmlText,"text/xml");
