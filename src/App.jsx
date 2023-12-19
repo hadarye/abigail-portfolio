@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import NavBar from './Components/NavBar/NavBar.component'
 import Cursor from './Components/Cursor/Cursor.component'
 import Home from './Routes/Home/Home.component'
-import handler from '../netlify/functions/fetchMedia/fetchMedia'
+import fetchMedia from '../netlify/functions/fetchMedia/fetchMedia'
 import './App.scss'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
   async function getData() {
     let accumuletor = []
-    let response = await fetch(handler);
+    let response = await fetch('../netlify/functions/fetchMedia/fetchMedia.js');
     let htmlText = await response.text();
     let parser = new DOMParser();
     let htmlDoc = parser.parseFromString(htmlText,"text/xml");
@@ -26,7 +26,7 @@ function App() {
   
 
   useEffect(() =>{
-    getData();
+    // getData();
   }, [])
 
   return (
@@ -40,7 +40,7 @@ function App() {
           
         </Route><Route path='/home' element={<Home></Home>}></Route>
       </Routes>
-      <img src="https://drive.google.com/thumbnail?id=1FLRGo0qlteSKFt0eg2AI9EFG-UPaRw96" alt="image" />
+      <img src="https://drive.google.com/thumbnail?id=1FLRGo0qlteSKFt0eg2AI9EFG-UPaRw96" alt="image" onClick={() => getData()}/>
       <iframe src="https://drive.google.com/embeddedfolderview?id=1kSPX_JQYE_NEK4dTfXvezNR4Ygq2YPLy#list" style={{width:"100%", height:"600px", border:"0",}}></iframe>
     </>
   )
