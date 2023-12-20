@@ -11,10 +11,11 @@ import Home from './Routes/Home/Home.component.jsx';
 import Gallery from './Routes/Gallery/Gallery.component.jsx';
 import Videos from './Routes/Videos/Videos.component.jsx';
 import AboutMe from './Routes/AboutMe/AboutMe.component.jsx';
+import Layout from './Routes/Layout/Layout.component.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<NavBar></NavBar>}>
+    <Route path="/" element={<Layout></Layout>}>
       <Route path='home' element={<Home></Home>}></Route>
       <Route path='gallery' element={<Gallery></Gallery>}></Route>
       <Route path='videos' element={<Videos></Videos>}></Route>

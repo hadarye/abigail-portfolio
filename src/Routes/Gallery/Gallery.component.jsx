@@ -35,9 +35,12 @@ const Gallery = (props) => {
 
   return (
     <div className='gallery'>
-      {galleryUrls.map((src) => (
+      <div className='img-wrapper'>
+        {galleryUrls.map((src) => (
           <Image imgSrc={src}></Image>
-      ))}
+        ))}
+      </div>
+
     </div>
   )
 }

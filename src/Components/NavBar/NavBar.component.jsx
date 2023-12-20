@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './NavBar.styles.scss'
 import CursorContext from "../Cursor/context/CursorContext";
 
@@ -34,9 +34,6 @@ const NavBar = () => {
         ))}
 
       </div>
-      <main>
-        <Outlet />
-      </main>
       </>
   )
 }
