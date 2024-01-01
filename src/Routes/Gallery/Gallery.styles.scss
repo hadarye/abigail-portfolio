@@ -17,3 +17,23 @@
     margin-left: auto; 
     width: 90vw;
 }
+
+// .pswp {
+//     position: fixed;
+//     top: 0;
+//     // height: 100vh;
+// }
+
+.pswp__img{
+    width: 60rem !important; 
+    height: auto !important;
+    position: absolute !important;
+    margin: 2rem;
+    transition: 0s !important;
+}
+
+.try {
+    width: 100% !important;    
+    height: auto !important;  
+    margin-bottom: 1rem;
+}

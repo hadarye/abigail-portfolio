@@ -12,8 +12,10 @@
   "dependencies": {
     "express": "^4.18.2",
     "firebase": "^10.7.1",
+    "photoswipe": "^5.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-photoswipe-gallery": "^3.0.1",
     "react-router-dom": "^6.20.1",
     "sass": "^1.69.5"
   },

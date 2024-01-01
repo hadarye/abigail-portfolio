@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react'
 import './Gallery.styles.scss'
 import Image from '../../Components/Image/Image.component'
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
+import { Gallery, Item } from 'react-photoswipe-gallery'
 
-const Gallery = (props) => {
+const Gallerys = (props) => {
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: '#my-gallery',
+    children: 'a',
+    pswpModule: () => import('photoswipe')
+  });
+  lightbox.init();
+  const [currSrc, setCurrSrc] = useState("");
   const [galleryUrls, setGalleryUrls] = useState([
     "https://drive.google.com/file/d/1FLRGo0qlteSKFt0eg2AI9EFG-UPaRw96/view?usp=drive_web",
     "https://drive.google.com/file/d/1tQyGIPqZs0kHabGHCRRLrip9GBO6MSQW/view?usp=drive_web",
@@ -34,15 +44,39 @@ const Gallery = (props) => {
   }, []);
 
   return (
-    <div className='gallery'>
+    <>
+      <div className='gallery'>
       <div className='img-wrapper'>
         {galleryUrls.map((src) => (
-          <Image imgSrc={src}></Image>
+          <span onClick={() => setCurrSrc(src)}>
+            <Image imgSrc={src}></Image>
+          </span>
         ))}
       </div>
-
     </div>
+    <div className='carusel'>
+      <img src={currSrc}/>
+        <div>
+          <div></div>
+        </div>
+    </div>
+      {/* <Gallery>
+      <div className='img-wrapper'>
+        {galleryUrls.map((src) => (
+          <Item key={src}
+            original={src}
+            thumbnail={src}
+          >
+            {({ ref, open }) => (
+              <img ref={ref} onClick={open} src={src} className='try'/>
+            )}
+          </Item>
+        ))}
+        </div>
+      </Gallery> */}
+    </>
+
   )
 }
 
-export default Gallery
+export default Gallerys
