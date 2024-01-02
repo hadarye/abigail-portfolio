@@ -5,7 +5,7 @@ const handler = async () => {
     const response = await fetch("https://drive.google.com/embeddedfolderview?id=1X9Ag_rT1nSP5HT1uEJcJMIrylbNlSiaU#list");
     const result = await response.text();
     return {
-      statusCode: 200,
+      statusCode: 202,
       body: result
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },

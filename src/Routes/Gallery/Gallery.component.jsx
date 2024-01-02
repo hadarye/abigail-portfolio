@@ -33,7 +33,7 @@ const Gallerys = (props) => {
   }
 
   const fixUrlArr = (url) => {
-    url = url.replace("file/d/", 'thumbnail?id=');
+    url = url.replace("file/d/", 'uc?export=view&id=');
     url = url.replace("/view?usp=drive_web", '');
     return url;
   }
