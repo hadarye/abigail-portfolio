@@ -28,7 +28,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className='nav-bar' onMouseEnter={() => setType("hamburger")} onMouseLeave={() => setType("default")}>
+      <div className='nav-bar' onMouseEnter={() => {setType("hamburger")}} onMouseLeave={() => setType("default")}>
         {NavStrs.map((element) => (
           <p key={element.name} onClick={() => navigate(element.navigateLocation)}>{element.name}</p>
         ))}

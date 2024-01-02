@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import './Gallery.styles.scss'
-import Image from '../../Components/Image/Image.component'
+import Image from '../../Components/Image/Image.component';
+import arrow from '../../assets/images/next.png';
+import close from '../../assets/images/close.png';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
 import { Gallery, Item } from 'react-photoswipe-gallery'
@@ -13,6 +15,8 @@ const Gallerys = (props) => {
   });
   lightbox.init();
   const [currSrc, setCurrSrc] = useState("");
+  const [currSrcIndex, setCurrSrcIndex] = useState("");
+  const [showCarusel, setShowCarusel] = useState(false);
   const [galleryUrls, setGalleryUrls] = useState([
     "https://drive.google.com/file/d/1FLRGo0qlteSKFt0eg2AI9EFG-UPaRw96/view?usp=drive_web",
     "https://drive.google.com/file/d/1tQyGIPqZs0kHabGHCRRLrip9GBO6MSQW/view?usp=drive_web",
@@ -39,6 +43,12 @@ const Gallerys = (props) => {
     return url;
   }
 
+  const toggleCarusel = (num) => {
+    let length = galleryUrls.length;
+    setCurrSrc(galleryUrls[((currSrcIndex + num) % length + length) % length]); 
+    setCurrSrcIndex(currSrcIndex + num);
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -46,20 +56,23 @@ const Gallerys = (props) => {
   return (
     <>
       <div className='gallery'>
-      <div className='img-wrapper'>
-        {galleryUrls.map((src) => (
-          <span onClick={() => setCurrSrc(src)}>
-            <Image imgSrc={src}></Image>
-          </span>
-        ))}
-      </div>
-    </div>
-    <div className='carusel'>
-      <img src={currSrc}/>
-        <div>
-          <div></div>
+        <div className='img-wrapper'>
+          {galleryUrls.map((src, index) => (
+            <span onClick={() => {setCurrSrc(src); setCurrSrcIndex(index); setShowCarusel(true)}}>
+              <Image imgSrc={src}></Image>
+            </span>
+          ))}
         </div>
-    </div>
+        <div className='fade-bottom'></div>
+      </div>
+      <div className='carusel' style={showCarusel ? {opacity: 1} : {opacity: 0, pointerEvents: 'none'}}>
+        <img className='close-btn' src={close} onClick={() => setShowCarusel(false)}></img>
+        <div style={{backgroundImage: `url(${currSrc})`}} className='carusel-img'></div>
+        <div className='arrow-container'>
+          <img className='arrow mirror' src={arrow} onClick={() => toggleCarusel(-1)} draggable="false"></img>
+          <img className='arrow' src={arrow} onClick={() => toggleCarusel(1)} draggable="false"></img>
+        </div>
+      </div>
       {/* <Gallery>
       <div className='img-wrapper'>
         {galleryUrls.map((src) => (

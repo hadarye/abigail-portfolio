@@ -7,7 +7,7 @@ const Image = (props) => {
     }, []);
     return (
         <>
-            <img src={props.imgSrc}></img>
+            <img src={props.imgSrc} className='gallery-item'></img>
         </>
     )
 }
