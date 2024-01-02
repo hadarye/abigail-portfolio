@@ -51,6 +51,7 @@ $beige: #eeeae7f4;
     flex-direction: column;
     transition: 0.3s;
     opacity: 0;
+    isolation: isolate;
     // pointer-events: none;
 }
 

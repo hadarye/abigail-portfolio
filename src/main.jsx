@@ -26,11 +26,11 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <BrowserRouter> */}
-    <RouterProvider router={router}>
-      <CursorManager>
+    <CursorManager>
+      <RouterProvider router={router}>
         <App />
-      </CursorManager>
-    </RouterProvider>
+      </RouterProvider>
+    </CursorManager>
     {/* </BrowserRouter> */}
   </React.StrictMode>,
 )

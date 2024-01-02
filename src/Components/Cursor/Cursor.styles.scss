@@ -79,11 +79,14 @@
 
 .hamburger {
   .cursor-background {
-    animation: fadeOut 0.4s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
-  }
+    // animation: scaleUp 0.4s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
 
+  }
+  // mix-blend-mode: normal;
+  // opacity: 0.6;
   .main-cursor-background {
-    animation: scaleUp 0.4s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+    animation: fadeOut 0.4s cubic-bezier(0.77, 0, 0.175, 1) 0s forwards;
+    
   }
 }
 

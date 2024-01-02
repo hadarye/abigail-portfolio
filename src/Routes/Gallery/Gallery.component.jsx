@@ -1,19 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import './Gallery.styles.scss'
 import Image from '../../Components/Image/Image.component';
 import arrow from '../../assets/images/next.png';
 import close from '../../assets/images/close.png';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
-import { Gallery, Item } from 'react-photoswipe-gallery'
+import CursorContext from "../../Components/Cursor/context/CursorContext";
 
 const Gallerys = (props) => {
-  const lightbox = new PhotoSwipeLightbox({
-    gallery: '#my-gallery',
-    children: 'a',
-    pswpModule: () => import('photoswipe')
-  });
-  lightbox.init();
+  const { setType } = useContext(CursorContext);
   const [currSrc, setCurrSrc] = useState("");
   const [currSrcIndex, setCurrSrcIndex] = useState("");
   const [showCarusel, setShowCarusel] = useState(false);
@@ -66,11 +61,11 @@ const Gallerys = (props) => {
         <div className='fade-bottom'></div>
       </div>
       <div className='carusel' style={showCarusel ? {opacity: 1} : {opacity: 0, pointerEvents: 'none'}}>
-        <img className='close-btn' src={close} onClick={() => setShowCarusel(false)}></img>
+        <img className='close-btn' src={close} onMouseEnter={() => {setType("hamburger")}} onMouseLeave={() => setType("default")} onClick={() => setShowCarusel(false)}></img>
         <div style={{backgroundImage: `url(${currSrc})`}} className='carusel-img'></div>
         <div className='arrow-container'>
-          <img className='arrow mirror' src={arrow} onClick={() => toggleCarusel(-1)} draggable="false"></img>
-          <img className='arrow' src={arrow} onClick={() => toggleCarusel(1)} draggable="false"></img>
+          <img className='arrow mirror' src={arrow}  onMouseEnter={() => {setType("hamburger")}} onMouseLeave={() => setType("default")} onClick={() => toggleCarusel(-1)} draggable="false"></img>
+          <img className='arrow' src={arrow} onMouseEnter={() => {setType("hamburger")}} onMouseLeave={() => setType("default")} onClick={() => toggleCarusel(1)} draggable="false"></img>
         </div>
       </div>
       {/* <Gallery>
