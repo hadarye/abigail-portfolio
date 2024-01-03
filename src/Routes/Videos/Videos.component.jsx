@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Videos.styles.scss'
+import Video from '../../Components/Video/Video.component'
 
 const Videos = () => {
   const [videoUrls, setVideoUrls] = useState([]);
@@ -11,17 +12,10 @@ const Videos = () => {
     urls = urls.map(fixUrlArr);
     console.log(urls);
     setVideoUrls(urls);
-
-    // test code:
-    // let urls = galleryUrls;
-    // urls = urls.map(fixUrlArr);
-    // console.log(urls);
-    // setVideoUrls(urls);
   }
 
   const fixUrlArr = (url) => {
-    url = url.replace("file/d/", 'uc?export=view&id=');
-    url = url.replace("/view?usp=drive_web", '');
+    url = url.replace("view?usp=drive_web", 'preview');
     return url;
   }
 
@@ -30,11 +24,10 @@ const Videos = () => {
   }, []);
 
   return (
-    <div><p>{videoUrls[0]}</p>
-      <video width="320" height="240" controls>
-        <source src={videoUrls[0]} type="video/mp4"></source>
-        
-      </video>
+    <div className='videos-container'>
+      {videoUrls.map((src) => (
+        <Video videoSrc={src}></Video>
+      ))}
     </div>
   )
 }
