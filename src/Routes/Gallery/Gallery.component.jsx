@@ -13,23 +13,23 @@ const Gallerys = (props) => {
   const [currSrcIndex, setCurrSrcIndex] = useState("");
   const [showCarusel, setShowCarusel] = useState(false);
   const [galleryUrls, setGalleryUrls] = useState([
-    "https://drive.google.com/file/d/1FLRGo0qlteSKFt0eg2AI9EFG-UPaRw96/view?usp=drive_web",
-    "https://drive.google.com/file/d/1tQyGIPqZs0kHabGHCRRLrip9GBO6MSQW/view?usp=drive_web",
-    "https://drive.google.com/file/d/16oCD06UZ6U-pxJ0DhVlpKeLcRRDUf5Us/view?usp=drive_web"
+    // "https://drive.google.com/file/d/1FLRGo0qlteSKFt0eg2AI9EFG-UPaRw96/view?usp=drive_web",
+    // "https://drive.google.com/file/d/1tQyGIPqZs0kHabGHCRRLrip9GBO6MSQW/view?usp=drive_web",
+    // "https://drive.google.com/file/d/16oCD06UZ6U-pxJ0DhVlpKeLcRRDUf5Us/view?usp=drive_web"
   ]);
   async function getData() {
-    // let response = await fetch('/.netlify/functions/fetchMedia');
-    // let htmlText = await response.text();
-    // let urls = htmlText.match(/(?<=<a href=").+?(?=")/g);
-    // urls = urls.map(fixUrlArr);
-    // console.log(urls);
-    // setGalleryUrls(urls);
-
-    // test code:
-    let urls = galleryUrls;
+    let response = await fetch('/.netlify/functions/fetchMedia');
+    let htmlText = await response.text();
+    let urls = htmlText.match(/(?<=<a href=").+?(?=")/g);
     urls = urls.map(fixUrlArr);
     console.log(urls);
     setGalleryUrls(urls);
+
+    // test code:
+    // let urls = galleryUrls;
+    // urls = urls.map(fixUrlArr);
+    // console.log(urls);
+    // setGalleryUrls(urls);
   }
 
   const fixUrlArr = (url) => {
