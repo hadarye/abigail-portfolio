@@ -70,11 +70,11 @@ $beige: #eeeae7f4;
 
 .fade-bottom {
     width: 100vw;
-    height: 6rem;
+    height: 8rem;
     pointer-events: none;
     background: rgb(255, 255, 255);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(238, 234, 231, 1) 76%);
-    position: absolute;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(238, 234, 231, 1) 80%); 
+    position: fixed;
     bottom: 0;
 }
 

@@ -7,10 +7,8 @@ const Videos = () => {
   async function getData() {
     let response = await fetch('/.netlify/functions/fetchVideos');
     let htmlText = await response.text();
-    console.log(htmlText);
     let urls = htmlText.match(/(?<=<a href=").+?(?=")/g);
     urls = urls.map(fixUrlArr);
-    console.log(urls);
     setVideoUrls(urls);
   }
 
