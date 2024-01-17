@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import CursorManager from './Components/Cursor/context/manager.tsx';
-import { HashRouter, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom';
+import { GalleryProvider } from './Contexts/Gallery.context.jsx'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 // import CostumCurs
 import './index.css'
 import NavBar from './Components/NavBar/NavBar.component.jsx';
@@ -25,12 +25,12 @@ const router = createBrowserRouter(
 )
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <BrowserRouter> */}
-    <CursorManager>
-      <RouterProvider router={router}>
-        <App />
-      </RouterProvider>
-    </CursorManager>
-    {/* </BrowserRouter> */}
+    <GalleryProvider>
+      <CursorManager>
+        <RouterProvider router={router}>
+          <App />
+        </RouterProvider>
+      </CursorManager>
+    </GalleryProvider>
   </React.StrictMode>,
 )

@@ -14,6 +14,7 @@ function App() {
 
   useEffect(() => {
     // let {arr, isLoading} = useFetch('/.netlify/functions/fetchMedia');
+    console.log("in");
   }, [])
 
   return (

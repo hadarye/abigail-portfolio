@@ -18,7 +18,7 @@ const Videos = () => {
   }
 
   useEffect(() => {
-    getData();
+    // getData();
   }, []);
 
   return (

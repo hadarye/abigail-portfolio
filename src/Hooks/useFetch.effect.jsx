@@ -10,29 +10,25 @@ const useFetch = (link, videos) => {
   const [videoUrls, setVideoUrls] = useState([]);
 
   useEffect(() => {
-    if (galleryUrls.length === 0 || videoUrls.length === 0) {
-      try {
-        const fetchData = async () => {
-          setIsLoading(true);
-          let response = await fetch(link);
-          let htmlText = await response.text();
-          let urls = htmlText.match(/(?<=<a href=").+?(?=")/g);
-          if (videos) {
-            urls = urls.map(fixVideoUrlArr);
-            setVideoUrls(urls);
-          } else {
-            urls = urls.map(fixPicUrlArr);
-            setGalleryUrls(urls);
-          }
-          // setData(urls);
-          // console.log(urls);
-        };
-        fetchData();
-      } catch (err) {
-        console.error(err);
-      }
-      setIsLoading(false);
+    try {
+      const fetchData = async () => {
+        setIsLoading(true);
+        let response = await fetch(link);
+        let htmlText = await response.text();
+        let urls = htmlText.match(/(?<=<a href=").+?(?=")/g);
+        if (videos) {
+          urls = urls.map(fixVideoUrlArr);
+        } else {
+          urls = urls.map(fixPicUrlArr);
+        }
+        setData(urls);
+        // console.log(urls);
+      };
+      fetchData();
+    } catch (err) {
+      console.error(err);
     }
+    setIsLoading(false);
   }, [link]);
 
   const fixPicUrlArr = (url) => {
@@ -46,7 +42,7 @@ const useFetch = (link, videos) => {
     return url;
   }
 
-  return { galleryUrls: data, isLoading: isLoading };
+  return { Data: data, isLoading: isLoading };
 };
 
 export default useFetch;

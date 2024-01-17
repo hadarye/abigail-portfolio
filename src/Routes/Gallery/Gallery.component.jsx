@@ -6,10 +6,13 @@ import close from '../../assets/images/close.png';
 import useFetch from '../../Hooks/useFetch.effect';
 import 'photoswipe/style.css';
 import CursorContext from "../../Components/Cursor/context/CursorContext";
+import GalleryContext from '../../Contexts/Gallery.context';
 
 const Gallery = (props) => {
   const { setType } = useContext(CursorContext);
-  const {galleryUrls, isLoading} = useFetch(`/.netlify/functions/fetchMedia`);
+  const {galleryUrls} = useContext(GalleryContext);
+
+  // const {galleryUrls, isLoading} = useFetch(`/.netlify/functions/fetchMedia`);
   const [currSrc, setCurrSrc] = useState("");
   const [currSrcIndex, setCurrSrcIndex] = useState("");
   const [showCarusel, setShowCarusel] = useState(false);
@@ -31,6 +34,7 @@ const Gallery = (props) => {
   }
 
   const fixUrlArr = (url) => {
+    console.log("url " + url);
     url = url.replace("file/d/", 'uc?export=view&id=');
     url = url.replace("/view?usp=drive_web", '');
     return url;
@@ -44,16 +48,18 @@ const Gallery = (props) => {
 
   useEffect(() => {
     // getData();
-    console.log(isLoading);
+    // console.log(isLoading);
   }, []);
 
   return (
     <>
       <div className='gallery'>
+      <iframe src="https://drive.google.com/file/d/1LQvOe2jmEFj-RHNNQHJ1tMTcA4FJ9FUm/preview" ></iframe>
+      <img src="https://lh3.googleusercontent.com/u/0/drive-viewer/AEYmBYTrvb6BDEHjtZSQGSXs27LjepgCHA3fKt-OXMFjV7jscMhQrbfJwDFzYUI8j8fcpGgpuEvtsIOdXx1IHBzu1LJc_ggjhQ=w1891-h1010" />
         <div className='img-wrapper'>
           {galleryUrls ? galleryUrls.map((src, index) => (
-            <span onClick={() => {setCurrSrc(src); setCurrSrcIndex(index); setShowCarusel(true)}}>
-              <Image imgSrc={src}></Image>
+            <span key={src} onClick={() => {setCurrSrc(src); setCurrSrcIndex(index); setShowCarusel(true)}}>
+              <Image imgSrc={src} ></Image>
             </span>
           )) : null }
           {/* <h1>hell to the no</h1> */}
